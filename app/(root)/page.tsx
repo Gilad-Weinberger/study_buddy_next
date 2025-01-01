@@ -6,6 +6,10 @@ export default async function Home() {
   const is_authenticated = Boolean(session?.user);
   const user = session?.user;
 
+  console.log("session", session);
+  console.log("is_authenticated", is_authenticated);
+  console.log("user", user);
+
   return (
     <>
       <Navbar />
