@@ -1,4 +1,4 @@
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,7 +48,22 @@ const Navbar = async () => {
               width={30}
               className="rounded-full"
             />
-            <p className="text-[17px]">{user?.name || "User"}</p>
+            <p className="mr-1.5 text-[17px]">
+              {user?.name?.split(" ")[0] || "User"}
+            </p>
+            <form
+              action={async () => {
+                "use server";
+                await signOut();
+              }}
+            >
+              <button
+                type="submit"
+                className="h-8 border-l border-white pl-4 text-white"
+              >
+                Logout
+              </button>
+            </form>
           </div>
         )}
       </div>

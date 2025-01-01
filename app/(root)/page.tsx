@@ -1,18 +1,20 @@
 import { auth } from "@/auth";
 import Navbar from "@/components/Navbar";
+import Rooms from "@/components/Rooms";
+import Topics from "@/components/Topics";
 
 export default async function Home() {
   const session = await auth();
-  const is_authenticated = Boolean(session?.user);
   const user = session?.user;
 
-  console.log("session", session);
-  console.log("is_authenticated", is_authenticated);
-  console.log("user", user);
-
   return (
-    <>
+    <div className="">
       <Navbar />
-    </>
+      <div className="flex justify-between px-40 py-5">
+        <Topics />
+        <Rooms user={user} />
+        <div className="recent_activities"></div>
+      </div>
+    </div>
   );
 }

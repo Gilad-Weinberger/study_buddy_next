@@ -19,3 +19,19 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.topic_name {
+  @apply text-light-gray m-0 w-52 cursor-pointer border-none bg-none py-4 text-left text-[15px] no-underline;
+}
+
+.topic_name:hover {
+  @apply text-main;
+}
+
+.topic_name:hover ~ .topic_count {
+  @apply text-main;
+}
+
+.topic_count {
+  @apply text-light-gray bg-dark cursor-pointer rounded-[3px] px-2.5 py-1 text-[13px];
+}
