@@ -102,7 +102,7 @@ const Rooms: React.FC<RoomsProps> = ({ user }) => {
                 </p>
               </div>
               <p className="text-light-gray bg-dark-medium rounded-2xl px-3 py-1">
-                {room.topics[0]}
+                {room.topics[0]?.name}
               </p>
             </div>
           </div>
