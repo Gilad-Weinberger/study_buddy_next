@@ -1,14 +1,43 @@
-import { signIn, signOut } from "@/auth";
+import { signIn, signOut, auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 
-import { auth } from "../auth";
 import Search from "./Search";
+import User from "@/lib/models/userModel";
+
+async function createUser(user: {
+  name: string;
+  email: string;
+  image: string;
+}) {
+  try {
+    const existingUser = await User.findOne({ email: user.email });
+
+    if (!existingUser) {
+      const newUser = new User({
+        name: user.name,
+        email: user.email,
+        image: user.image,
+      });
+      await newUser.save();
+    }
+  } catch (error) {
+    console.error("Error ensuring user exists:", error);
+  }
+}
 
 const Navbar = async () => {
   const session = await auth();
   const is_authenticated = Boolean(session?.user);
   const user = session?.user;
+
+  if (is_authenticated && user?.email) {
+    await createUser({
+      name: user.name || "Unknown User",
+      email: user.email,
+      image: user.image || "/user.svg",
+    });
+  }
 
   return (
     <div className="bg-dark flex items-center justify-between px-40 py-4">

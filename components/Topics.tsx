@@ -47,8 +47,8 @@ const Topics = () => {
 
   // Function to get room count for a specific topic
   const getTopicRoomCount = (topicId: string) => {
-    return rooms.filter(
-      (room) => room.topics.some((topic) => topic.toString() === topicId), // Ensures comparison is between strings
+    return rooms.filter((room) =>
+      room.topics.some((topic) => topic._id === topicId),
     ).length;
   };
 

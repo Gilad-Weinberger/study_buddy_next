@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rubik.className} bg-bg h-screen w-screen`}>
-        {children}
-      </body>
+      <body className={`${rubik.className} bg-bg min-h-screen`}>{children}</body>
     </html>
   );
 }

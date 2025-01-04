@@ -47,7 +47,6 @@ export async function DELETE(
 
   try {
     const { id } = params;
-
     // Find the topic by ID
     const topic = await Topic.findById(id);
 
