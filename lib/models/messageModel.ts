@@ -1,8 +1,9 @@
 import mongoose, { Schema } from "mongoose";
+import Room from "./roomModel";
 
 const MessageSchema = new Schema(
   {
-    room: { type: Schema.Types.ObjectId, ref: "Room", required: true },
+    room: { type: Schema.Types.ObjectId, ref: Room, required: true },
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     text: { type: String, required: true },
   },

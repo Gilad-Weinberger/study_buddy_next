@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import { da } from "date-fns/locale";
 
 type Topic = {
   _id: string;
@@ -62,8 +61,8 @@ const Recent_Activities: React.FC<RecentActivitiesProps> = ({ user }) => {
   }, [user]);
 
   return (
-    <div className="bg-dark max-h-[620px] w-[20vw] rounded">
-      <p className="text-light bg-dark-light m-0 rounded-t px-4 py-2.5">
+    <div className="max-h-[620px] w-[20vw] rounded bg-dark">
+      <p className="m-0 rounded-t bg-dark-light px-4 py-2.5 text-light">
         Recent Activities
       </p>
       {user ? (
@@ -71,38 +70,38 @@ const Recent_Activities: React.FC<RecentActivitiesProps> = ({ user }) => {
           {messages.map((message) => (
             <div
               key={message._id}
-              className="border-dark-medium w-full rounded border p-4"
+              className="w-full rounded border border-dark-medium p-4"
             >
               <Link
                 href="/"
                 className="mb-1 flex items-center gap-2.5 no-underline"
               >
                 <Image
-                  src="/logo.png"
+                  src={message.user.image || "/user.svg"}
                   alt="profile-image"
                   height={32}
                   width={32}
-                  className="border-main rounded-full border-2"
+                  className="rounded-full border-2 border-main"
                 />
                 <div>
-                  <p className="text-main m-0">@{message.user.name}</p>
-                  <p className="text-gray m-0 text-[13px]">
+                  <p className="m-0 text-main">@{message.user.name}</p>
+                  <p className="m-0 text-[13px] text-gray">
                     {formatDistanceToNow(new Date(message.createdAt), {
                       addSuffix: true,
                     })}
                   </p>
                 </div>
               </Link>
-              <p className="text-light-gray m-0 ml-11 text-[14px]">
+              <p className="m-0 ml-11 text-[14px] text-light-gray">
                 in the room:
               </p>
               <Link
                 href="/"
-                className="text-main hover:border-main m-0 ml-11 text-[14px] hover:border-b"
+                className="m-0 ml-11 text-[14px] text-main hover:border-b hover:border-main"
               >
                 {`"${message.room.name}"`}
               </Link>
-              <p className="bg-bg text-light mt-2 w-full rounded-md px-3 py-2 text-[14px] font-extralight">
+              <p className="mt-2 w-full rounded-md bg-bg px-3 py-2 text-[14px] font-extralight text-light">
                 {message.text}
               </p>
             </div>

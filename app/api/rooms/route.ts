@@ -9,7 +9,8 @@ export async function GET() {
   try {
     const rooms = await Room.find({})
       .populate("topics", "name")
-      .populate("host", "name image");
+      .populate("host", "name image")
+      .populate("participants", "name image");
     return NextResponse.json({ success: true, data: rooms });
   } catch (error: unknown) {
     if (error instanceof Error) {

@@ -8,8 +8,8 @@ export async function GET() {
 
   try {
     const messages = await Message.find({})
-      .populate("user", "name")
-      .populate("room", "name");
+      .populate("user", "name image")
+      .populate("room", "name _id");
     return NextResponse.json({ success: true, data: messages });
   } catch (error: unknown) {
     if (error instanceof Error) {

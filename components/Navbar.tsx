@@ -40,10 +40,10 @@ const Navbar = async () => {
   }
 
   return (
-    <div className="bg-dark flex items-center justify-between px-40 py-4">
+    <div className="flex items-center justify-between bg-dark px-40 py-4">
       <Link href="/" className="flex items-center no-underline">
         <Image src="/logo.png" alt="logo" width={30} height={30} />
-        <h1 className="text-light ml-4 text-xl font-bold">StudyBuddy</h1>
+        <h1 className="ml-4 text-xl font-bold text-light">StudyBuddy</h1>
       </Link>
       <div className="flex items-center gap-10">
         <Search />
